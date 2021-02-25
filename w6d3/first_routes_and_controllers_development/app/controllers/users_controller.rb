@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   #sup
   def index
-    render plain:'Sup this is a rendered page'
+    users = User.all 
+
+    render json: users
   end
   
   def create
