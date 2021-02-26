@@ -14,10 +14,13 @@
 class Cat < ApplicationRecord
   #add inclusion validation for allowed colors
   #add sex options m/f
+  validates :birth_date, :color, :name, :sex, :description, presence: true
+  validates :sex, length: { is: 1 }, inclusion: {in: %w(m f)}
+  validates :color, inclusion: {in: %w(red blue)}
+  
   def age
-    
     birthday = birth_date.to_s.to_i
-
     2021 - birthday
   end
+
 end
