@@ -1,0 +1,22 @@
+
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="5">Cat table</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <% @cat.attributes.each do |attr| %>
+      <td><%= attr[0] %></td>
+    <% end %>
+  </tr>
+  <tr>
+    <% @cat.attributes.each do |attr| %>
+      <td><%= attr[1] %></td>
+    <% end %>
+  </tr>
+  </tbody>
+</table>
+
