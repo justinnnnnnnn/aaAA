@@ -22,6 +22,34 @@ Array.prototype.uniq = function () {
   console.log(this)
   };
 
-console.log([1, 2, 2, 3, 3, 3].uniq())
+// console.log([1, 2, 2, 3, 3, 3].uniq())
 
 
+Array.prototype.twoSum = function () {
+  let sums = [];
+  for (let i = 0; i < (this.length - 1); i++) {
+    for (let j = i+1; j < this.length; j++) {
+      if (this[i] + this[j] === 0 && i !== j) {
+        sums.push([i, j]);
+      };
+    }
+  }
+  return sums;
+};
+
+// console.log([2, -2, 5, 1, -1].twoSum())
+
+Array.prototype.transpose = function () {
+  let transposed = [];
+  for (let i = 0; i < this.length; i++) {
+
+    for (let j = 0; j < this[i].length; j++) {
+      transposed.push([])
+    }
+  }
+}
+
+console.log(
+  [[1, 2],
+   [3, 4]
+  ].transpose())
