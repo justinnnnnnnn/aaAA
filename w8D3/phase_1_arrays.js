@@ -40,16 +40,22 @@ Array.prototype.twoSum = function () {
 // console.log([2, -2, 5, 1, -1].twoSum())
 
 Array.prototype.transpose = function () {
-  let transposed = [];
-  for (let i = 0; i < this.length; i++) {
-
-    for (let j = 0; j < this[i].length; j++) {
-      transposed.push([])
-    }
+  let transposed = new Array(this.length);
+  for (let i = 0; i < this.length; i++){
+    transposed[i] = new Array(this.length);
   }
+  for (let i = 0; i < this.length; i++) {
+    for (let j = 0; j < this[i].length; j++) {
+      transposed[i][j] = this[j][i];
+    };
+  }
+  return transposed;
 }
 
 console.log(
-  [[1, 2],
-   [3, 4]
+  [[1, 2, 7],
+   [3, 4, 4],
+   [5, 7, 9]
   ].transpose())
+
+  
