@@ -15,6 +15,8 @@ function Asteroid(options) {
   
 }
 
+
+
 Util.inherits(Asteroid, MovingObject);
 
 // new Asteroid({ pos: [30, 30] });
