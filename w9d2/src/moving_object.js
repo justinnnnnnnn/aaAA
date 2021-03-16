@@ -1,5 +1,6 @@
 // (pos, vel, radius, color)
 function MovingObject(options) {
+    // debugger/
     this.pos = options.pos;
     this.x = options.pos[0];
     this.y = options.pos[1];
