@@ -1,17 +1,16 @@
-function MovingObject() {
-  constructor(pos, vel, radius, color) {
-    this.pos = pos
-    this.x = pos[0];
-    this.y = pos[1];
-    this.vel = vel
-    this.xVel = vel[0];
-    this.yVel = vel[1];
-    this.radius = radius;
-    this.color = color;
-  }
+// (pos, vel, radius, color)
+function MovingObject(options) {
+    this.pos = options.pos;
+    this.x = options.pos[0];
+    this.y = options.pos[1];
+    this.vel = options.vel;
+    this.xVel = options.vel[0];
+    this.yVel = options.vel[1];
+    this.radius = options.radius;
+    this.color = options.color;
 }
 
-MovingObect.prototype.draw = function (ctx) {
+MovingObject.prototype.draw = function (ctx) {
   ctx.fillStyle = this.color
   ctx.beginPath()
 
@@ -26,5 +25,10 @@ MovingObect.prototype.draw = function (ctx) {
   ctx.fill()
 }
 
+MovingObject.prototype.move = function () {
+  this.x += this.xVel
+  this.y += this.yVel
+}
+// const movingObjectTest = new MovingObject([0,0], [1,1], 5, 'red') 
 
-module.exports = MovingObject
+module.exports = MovingObject;
