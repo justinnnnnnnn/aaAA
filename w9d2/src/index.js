@@ -10,8 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const game = new Game(canvas);
   const ctx = canvas.getContext("2d");
   const gameView = new GameView(game, ctx)
-  // ctx.fillStyle = "red";
-  // ctx.fillRect(10,10,40,30);
+
   gameView.start();
   console.log("DOM fully loaded and parsed");
 
@@ -22,18 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
     color: "#00FF00",
   });
 
-  // const ast = new Asteroid({ pos: [30, 30] });
-
   window.mo = mo;
-  // window.ast = ast;
   window.Game = Game;
   window.GameView = GameView;
   window.MovingObject = MovingObject;
   window.Asteroid = Asteroid;
   window.ctx = ctx;
 });
-
-// const canvas = document.getElementById('bird-game');
-// const game = new FlappyBird(canvas);
-// game.restart();
-// canvas.addEventListener("mousedown", game.click.bind(game));

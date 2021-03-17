@@ -1,6 +1,5 @@
-// (pos, vel, radius, color)
 function MovingObject(options) {
-    // debugger/
+
     this.pos    = options.pos;
     this.x      = options.pos[0];
     this.y      = options.pos[1];
@@ -30,6 +29,5 @@ MovingObject.prototype.move = function () {
   this.x += this.xVel
   this.y += this.yVel
 }
-// const movingObjectTest = new MovingObject([0,0], [1,1], 5, 'red') 
 
 module.exports = MovingObject;
