@@ -1,14 +1,14 @@
 // (pos, vel, radius, color)
 function MovingObject(options) {
     // debugger/
-    this.pos = options.pos;
-    this.x = options.pos[0];
-    this.y = options.pos[1];
-    this.vel = options.vel;
-    this.xVel = options.vel[0];
-    this.yVel = options.vel[1];
+    this.pos    = options.pos;
+    this.x      = options.pos[0];
+    this.y      = options.pos[1];
+    this.vel    = options.vel;
+    this.xVel   = options.vel[0];
+    this.yVel   = options.vel[1];
     this.radius = options.radius;
-    this.color = options.color;
+    this.color  = options.color;
 }
 
 MovingObject.prototype.draw = function (ctx) {

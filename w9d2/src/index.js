@@ -1,13 +1,17 @@
 console.log("Webpack is working");
 const MovingObject = require("./moving_object.js");
 const Asteroid = require("./asteroid.js");
+const GameView = require("./game_view.js");
+const Game = require("./game.js");
+
 
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("game-canvas");
   const game = new Game(canvas);
-  const context = canvas.getContext("2d");
-  // context.fillStyle = "red";
-  // context.fillRect(10,10,40,30);
+  const ctx = canvas.getContext("2d");
+  const gameView = new GameView(ctx)
+  // ctx.fillStyle = "red";
+  // ctx.fillRect(10,10,40,30);
   console.log("DOM fully loaded and parsed");
 
   const mo = new MovingObject({
@@ -21,9 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.mo = mo;
   window.ast = ast;
+  window.Game = Game;
+  window.GameView = GameView;
   window.MovingObject = MovingObject;
   window.Asteroid = Asteroid;
-  window.context = context;
+  window.ctx = ctx;
 });
 
 // const canvas = document.getElementById('bird-game');
