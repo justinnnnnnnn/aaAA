@@ -9,9 +9,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("game-canvas");
   const game = new Game(canvas);
   const ctx = canvas.getContext("2d");
-  const gameView = new GameView(ctx)
+  const gameView = new GameView(game, ctx)
   // ctx.fillStyle = "red";
   // ctx.fillRect(10,10,40,30);
+  gameView.start();
   console.log("DOM fully loaded and parsed");
 
   const mo = new MovingObject({
@@ -24,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // const ast = new Asteroid({ pos: [30, 30] });
 
   window.mo = mo;
-  window.ast = ast;
+  // window.ast = ast;
   window.Game = Game;
   window.GameView = GameView;
   window.MovingObject = MovingObject;

@@ -23,9 +23,9 @@ eval("const MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src
 /*!*********************!*\
   !*** ./src/game.js ***!
   \*********************/
-/***/ ((module) => {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("\r\n\r\nfunction Game(canvas) {\r\n  const asteroids = [];\r\n\r\n  const DIM_X = canvas.width;\r\n  const DIM_Y = canvas.height;\r\n  const NUM_ASTEROIDS = 10;\r\n  this.addAsteroids()\r\n}\r\n\r\nGame.prototype.addAsteroids = function () {\r\n  for (let i = 1; i <= this.NUM_ASTEROIDS; i++) {\r\n    let newAst = `asty${i}`\r\n    newAst = new Asteroid({\r\n      pos: [Math.random() * DIM_X, Math.random() * DIM_Y]\r\n    });\r\n    this.asteroids.push(ast)\r\n  }\r\n};\r\n\r\nGame.prototype.draw = function (ctx) {\r\n  ctx.clearRect(0, 0, DIM_X, DIM_Y)\r\n  for (let i = 0; i < asteroids.length; i++) {\r\n    this.asteroids[i].draw(ctx)\r\n  }\r\n}\r\n\r\nGame.prototype.moveObjects = function () {\r\n  for (let i = 0; i < asteroids.length; i++) {\r\n    this.asteroids[i].move()\r\n  }\r\n}\r\n\r\nmodule.exports = Game;\n\n//# sourceURL=webpack:///./src/game.js?");
+eval("let Asteroid = __webpack_require__(/*! ./asteroid.js */ \"./src/asteroid.js\")\r\n\r\nfunction Game(canvas) {\r\n  this.asteroids = [];\r\n\r\n  this.DIM_X = canvas.width;\r\n  this.DIM_Y = canvas.height;\r\n  this.NUM_ASTEROIDS = 10;\r\n  this.addAsteroids()\r\n}\r\n\r\nGame.prototype.addAsteroids = function () {\r\n  for (let i = 1; i <= this.NUM_ASTEROIDS; i++) {\r\n    let newAst = new Asteroid({\r\n      pos: [Math.random() * this.DIM_X, Math.random() * this.DIM_Y]\r\n    });\r\n    this.asteroids.push(newAst);\r\n  }\r\n};\r\n\r\nGame.prototype.draw = function (ctx) {\r\n  ctx.clearRect(0, 0, this.DIM_X, this.DIM_Y)\r\n  for (let i = 0; i < this.asteroids.length; i++) {\r\n    this.asteroids[i].draw(ctx)\r\n  }\r\n}\r\n\r\nGame.prototype.moveObjects = function () {\r\n  for (let i = 0; i < this.asteroids.length; i++) {\r\n    this.asteroids[i].move()\r\n  }\r\n}\r\n\r\nmodule.exports = Game;\n\n//# sourceURL=webpack:///./src/game.js?");
 
 /***/ }),
 
@@ -33,9 +33,9 @@ eval("\r\n\r\nfunction Game(canvas) {\r\n  const asteroids = [];\r\n\r\n  const 
 /*!**************************!*\
   !*** ./src/game_view.js ***!
   \**************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const Game = __webpack_require__(/*! ./game.js */ \"./src/game.js\")\n\nfunction GameView(ctx) {\n  this.ctx = ctx;\n\n}\n\nGameView.prototype.start = function () {\n  setInterval(Game.prototype.moveObjects(), 20 )\n  setInterval(Game.prototype.draw(this.ctx), 20 )\n}\n\nexports.modules = GameView;\n\n//# sourceURL=webpack:///./src/game_view.js?");
+eval("const Game = __webpack_require__(/*! ./game.js */ \"./src/game.js\")\n\nfunction GameView(game, ctx) {\n  this.ctx = ctx;\n  this.game = game;\n}\n\nGameView.prototype.start = function () {\n  let that = this;\n  setInterval(function() { that.game.moveObjects() }, 20 )\n  setInterval(function() { that.game.draw(that.ctx) }, 20 )\n}\n\nmodule.exports = GameView;\n\n//# sourceURL=webpack:///./src/game_view.js?");
 
 /***/ }),
 
@@ -45,7 +45,7 @@ eval("const Game = __webpack_require__(/*! ./game.js */ \"./src/game.js\")\n\nfu
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("console.log(\"Webpack is working\");\r\nconst MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\r\nconst Asteroid = __webpack_require__(/*! ./asteroid.js */ \"./src/asteroid.js\");\r\nconst GameView = __webpack_require__(/*! ./game_view.js */ \"./src/game_view.js\");\r\nconst Game = __webpack_require__(/*! ./game.js */ \"./src/game.js\");\r\n\r\n\r\ndocument.addEventListener(\"DOMContentLoaded\", () => {\r\n  const canvas = document.getElementById(\"game-canvas\");\r\n  const game = new Game(canvas);\r\n  const ctx = canvas.getContext(\"2d\");\r\n  const gameView = new GameView(ctx)\r\n  // ctx.fillStyle = \"red\";\r\n  // ctx.fillRect(10,10,40,30);\r\n  console.log(\"DOM fully loaded and parsed\");\r\n\r\n  const mo = new MovingObject({\r\n    pos: [30, 30],\r\n    vel: [10, 10],\r\n    radius: 5,\r\n    color: \"#00FF00\",\r\n  });\r\n\r\n  // const ast = new Asteroid({ pos: [30, 30] });\r\n\r\n  window.mo = mo;\r\n  window.ast = ast;\r\n  window.Game = Game;\r\n  window.GameView = GameView;\r\n  window.MovingObject = MovingObject;\r\n  window.Asteroid = Asteroid;\r\n  window.ctx = ctx;\r\n});\r\n\r\n// const canvas = document.getElementById('bird-game');\r\n// const game = new FlappyBird(canvas);\r\n// game.restart();\r\n// canvas.addEventListener(\"mousedown\", game.click.bind(game));\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("console.log(\"Webpack is working\");\r\nconst MovingObject = __webpack_require__(/*! ./moving_object.js */ \"./src/moving_object.js\");\r\nconst Asteroid = __webpack_require__(/*! ./asteroid.js */ \"./src/asteroid.js\");\r\nconst GameView = __webpack_require__(/*! ./game_view.js */ \"./src/game_view.js\");\r\nconst Game = __webpack_require__(/*! ./game.js */ \"./src/game.js\");\r\n\r\n\r\ndocument.addEventListener(\"DOMContentLoaded\", () => {\r\n  const canvas = document.getElementById(\"game-canvas\");\r\n  const game = new Game(canvas);\r\n  const ctx = canvas.getContext(\"2d\");\r\n  const gameView = new GameView(game, ctx)\r\n  // ctx.fillStyle = \"red\";\r\n  // ctx.fillRect(10,10,40,30);\r\n  gameView.start();\r\n  console.log(\"DOM fully loaded and parsed\");\r\n\r\n  const mo = new MovingObject({\r\n    pos: [30, 30],\r\n    vel: [10, 10],\r\n    radius: 5,\r\n    color: \"#00FF00\",\r\n  });\r\n\r\n  // const ast = new Asteroid({ pos: [30, 30] });\r\n\r\n  window.mo = mo;\r\n  // window.ast = ast;\r\n  window.Game = Game;\r\n  window.GameView = GameView;\r\n  window.MovingObject = MovingObject;\r\n  window.Asteroid = Asteroid;\r\n  window.ctx = ctx;\r\n});\r\n\r\n// const canvas = document.getElementById('bird-game');\r\n// const game = new FlappyBird(canvas);\r\n// game.restart();\r\n// canvas.addEventListener(\"mousedown\", game.click.bind(game));\r\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ }),
 
