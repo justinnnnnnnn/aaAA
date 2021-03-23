@@ -10,5 +10,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // const hello = React.createElement('h1', null, ["Hello world, from React"]);
   const hello = <h1>Hello World, from React</h1>;
 
-  ReactDOM.render(<App name="widgets" />, root);
+  ReactDOM.render(<h1>sup</h1>, root);
 });
