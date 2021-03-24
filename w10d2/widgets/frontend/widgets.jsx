@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import App from './app';
+import Clock from './clock.jsx';
 
 // console.log("Webpack is working!");
 
@@ -10,5 +10,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // const hello = React.createElement('h1', null, ["Hello world, from React"]);
   const hello = <h1>Hello World, from React</h1>;
 
-  ReactDOM.render(<h1>sup</h1>, root);
+  ReactDOM.render(<Clock />, root);
 });
