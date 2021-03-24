@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Clock from './clock.jsx';
+import Tabs from './tabs'
 
 // console.log("Webpack is working!");
 
@@ -11,4 +12,5 @@ document.addEventListener("DOMContentLoaded", () => {
   const hello = <h1>Hello World, from React</h1>;
 
   ReactDOM.render(<Clock />, root);
+  ReactDOM.render(<Tabs />, root);
 });
